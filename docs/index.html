@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dọn Nhà Đón Tết - Game Mô Phỏng Dọn Dẹp Chữa Lành</title>
+  <meta name="description" content="Trải nghiệm tự tay lau dọn đồ đạc ngày Tết Việt Nam: bộ ấm trà gốm sứ, lư hương đồng, bàn ghế gỗ. Pha chế mẹo dân gian, cọ rửa bọt ASMR cực thư giãn!">
+  <style>
+    :root {
+      --bg: #0b1118;
+      --card-bg: #141f2d;
+      --card-border: #233549;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --gold: #f59e0b;
+      --gold-bright: #fbbf24;
+      --red-tet: #dc2626;
+      --accent: #38bdf8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(8px);
+    }
+    .header-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold-bright);
+      text-decoration: none;
+    }
+    .nav-menu {
+      display: flex;
+      gap: 16px;
+    }
+    .nav-menu a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-menu a:hover {
+      color: #fff;
+      background: rgba(255,255,255,0.08);
+    }
+    .hero {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 48px 20px 32px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(220, 38, 38, 0.2);
+      border: 1px solid var(--red-tet);
+      color: #fca5a5;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 40px;
+      color: #fff;
+      margin: 0 0 16px;
+      line-height: 1.25;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #fbbf24 0%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 32px;
+    }
+    .hero-banner {
+      width: 100%;
+      max-height: 460px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+      margin-bottom: 48px;
+    }
+    .features {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: inline-block;
+    }
+    .feature-card h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      color: var(--gold-bright);
+    }
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .gallery {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+    }
+    .gallery-item p {
+      text-align: center;
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+    .cta-box {
+      background: linear-gradient(135deg, #1e293b 0%, #172554 100%);
+      border: 1px solid #3b82f6;
+      border-radius: 16px;
+      padding: 36px 24px;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 60px;
+    }
+    .cta-box h2 {
+      margin: 0 0 12px;
+      color: #fff;
+    }
+    .btn-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+      margin-top: 14px;
+      transition: opacity 0.2s;
+    }
+    .btn-download:hover {
+      opacity: 0.92;
+    }
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-container">
+    <a href="index.html" class="logo">🧹 Dọn Nhà Đón Tết</a>
+    <nav class="nav-menu">
+      <a href="privacy.html">Chính sách bảo mật</a>
+      <a href="terms.html">Điều khoản dịch vụ</a>
+      <a href="mailto:donnhadontet.support@gmail.com">Hỗ trợ</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <span class="badge">🌸 CHÀO XUÂN BÍNH NGỌ 2026</span>
+  <h1>Mô Phỏng <span>Dọn Nhà Đón Tết</span> Chữa Lành</h1>
+  <p class="subtitle">Đắm chìm vào không khí Tết cổ truyền ấm cúng: tự tay pha chế dung dịch tẩy rửa dân gian, đánh bay vết ố trà lâu năm trên ấm chén gốm sứ, chùi sáng bóng lư đồng và nhận lì xì may mắn!</p>
+  
+  <img src="assets/banner.png" alt="Không gian phòng khách ấm cúng ngày Tết" class="hero-banner">
+</div>
+
+<section class="features">
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🍵</div>
+      <h3>Bộ Ấm Chén Trà Gốm Sứ</h3>
+      <p>Cạo từng lớp mảng bám trà mạn lâu năm bằng công thức Baking Soda truyền thống, lau chùi mặt trước, mặt sau và lòng chén sứ trắng ngọc.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🧪</div>
+      <h3>Cơ Chế Pha Chế Độc Đáo</h3>
+      <p>Tự tay trộn Chanh, Muối, Giấm ăn, Baking soda và Cồn tẩy rửa vào cối đất để tạo nên các loại bọt dung dịch chuyên dụng khắc chế từng vết bẩn.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🫧</div>
+      <h3>Âm Thanh ASMR Chùi Kin Kít</h3>
+      <p>Cảm giác rê ngón tay cọ sạch bọt xà phòng, tiếng kỳ cọ sột soạt chân thực kết hợp cùng âm thanh "kin kít" khi đồ vật đạt độ sáng bóng 100%.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🏮</div>
+      <h3>Đỉnh Đồng & Bàn Ghế Cổ Truyền</h3>
+      <p>Hàng loạt màn chơi đa dạng: đánh bóng rỉ xanh lư hương bàn thờ, lau dầu bóng ghế bọc gấm, rộn ràng chuẩn bị đón khoảnh khắc Giao thừa.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🧧</div>
+      <h3>Bàn Tay Vén Khéo & Lì Xì</h3>
+      <p>Tiết kiệm nguyên liệu, hoàn thành xuất sắc lời dặn của Mẹ để đạt danh hiệu 3 sao "Bàn Tay Vén Khéo" và gom trọn phong bao lì xì đỏ may mắn.</p>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>An Toàn & Thân Thiện</h3>
+      <p>Không thu thập dữ liệu cá nhân nhạy cảm, không yêu cầu tài khoản, phù hợp cho mọi lứa tuổi gia đình cùng thư giãn.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <h2 style="text-align: center; color: var(--gold-bright); margin-bottom: 24px;">Hình Ảnh Trò Chơi</h2>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="assets/screen1.png" alt="Cọ rửa vết ố trà">
+      <p>Cọ rửa vết ố trà mạn trên chén sứ</p>
+    </div>
+    <div class="gallery-item">
+      <img src="assets/screen2.png" alt="Giao diện pha chế dung dịch">
+      <p>Bàn caddy dụng cụ & pha chế dung dịch</p>
+    </div>
+    <div class="gallery-item">
+      <img src="assets/banner.png" alt="Không gian phòng khách">
+      <p>Không gian ấm cúng ngày Tết</p>
+    </div>
+  </div>
+</section>
+
+<div class="cta-box">
+  <h2>Tải và trải nghiệm ngay trên Google Play!</h2>
+  <p style="color: var(--text-muted); margin: 0 0 16px;">Gia nhập đợt thử nghiệm khép kín sớm nhất để cùng dọn nhà đón Tết.</p>
+  <a href="https://play.google.com/store/apps/details?id=com.donnhadontet.game3d" class="btn-download">
+    ▶ Google Play Store
+  </a>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="index.html">Trang chủ</a>
+    <a href="privacy.html">Chính sách quyền riêng tư (Privacy Policy)</a>
+    <a href="terms.html">Điều khoản sử dụng (Terms of Service)</a>
+    <a href="mailto:donnhadontet.support@gmail.com">Liên hệ hỗ trợ</a>
+  </div>
+  <p>&copy; 2026 Dọn Nhà Đón Tết. Bản quyền thuộc về đội ngũ phát triển game.</p>
+</footer>
+
+</body>
+</html>
